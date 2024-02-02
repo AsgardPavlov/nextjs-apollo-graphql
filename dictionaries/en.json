@@ -1,0 +1,275 @@
+{
+  "widget": {
+    "consultant": "Gulya",
+    "title": "Real Estate Advisor"
+  },
+  "navigation": {
+    "services": "Our services",
+    "objects": "Objects",
+    "blog": "Blog",
+    "contacts": "Contacts",
+    "about": "About us",
+    "reviews": "Reviews"
+  },
+  "common": {
+    "russia": "Russia",
+    "dubai": "Dubai",
+    "moscow": "Moscow",
+    "viewAll": "View all",
+    "contact": "Contact",
+    "cost": "Cost"
+  },
+  "apartmentType": {
+    "apartments": {
+      "label": "Apartments",
+      "value": "APARTMENTS"
+    },
+    "townhouses": {
+      "label": "Townhouses",
+      "value":  "TOWNHOUSES"
+    },
+    "villas": {
+      "label": "Villas",
+      "value":  "VILLAS"
+    },
+    "plots": {
+      "label": "Plots",
+      "value": "PLOTS"
+    }
+  },
+  "section": {
+    "reviews": {
+      "title": "Reviews",
+      "learnMore": "Learn more",
+      "viewAll": "View all"
+    },
+    "leaveApplication": {
+      "title": "leave your application",
+      "yourName": "Your name",
+      "phoneNumber": "Phone number",
+      "mail": "Email",
+      "convenientTime": "Convenient communication time",
+      "interestedObject": "Object of interest",
+      "communicationMethod": "Preferred method of communication:",
+      "communicationTypes": [
+        {
+          "value": "WA",
+          "label": "Whatsapp"
+        },
+        {
+          "value": "TG",
+          "label": "Telegram"
+        },
+        {
+          "value": "CALL",
+          "label": "Call"
+        },
+        {
+          "value": "EMAIL",
+          "label": "Email"
+        }
+      ],
+      "send": "Send",
+      "agreement": "By clicking on the button you agree to the privacy policy"
+    }
+  },
+  "page": {
+    "home": {
+      "hero": {
+        "agency": "International\nReal Estate Agency",
+        "experts": "Real estate Experts",
+        "outlineButton": "View objects"
+      },
+      "about": {
+        "title": "About Us",
+        "description": "TUIMAADA is an international group of companies and services, including an elite real estate agency in Moscow, USA and the UAE.",
+        "tagline": "We are ready to help you",
+        "taglineDescription": "We are ready to help you in choosing a suitable object. Our agency works both directly with the developer and in the secondary market. TUIMAADA specialists confidently navigate the real estate market in the UAE, know the real prices, features of districts and individual objects."
+      },
+      "statistic": {
+        "commission": {
+          "number": "0",
+          "title": "%",
+          "label": "commission"
+        },
+        "experience": {
+          "number": "11",
+          "title": " year",
+          "label": "on the market"
+        },
+        "benefits": {
+          "title": "maximum",
+          "label": "benefits"
+        },
+        "conditions": {
+          "title": "comfortable",
+          "label": "draw up documents"
+        }
+      },
+      "newObjects": "New objects",
+      "bestOffer": {
+        "title": "we will find the best offer for you",
+        "description": "For many years we have been helping our clients to purchase luxury real estate on the most favorable terms.\n\nIt is also possible to purchase an object remotely without leaving the country.",
+        "buttonTitle": "Contact"
+      }
+    },
+
+    "contacts": {
+      "hero": {
+        "title": "Contacts",
+        "addresses": [
+          {
+            "id": "msc",
+            "city": "Moscow",
+            "building": "Gorod stolits",
+            "street": "Moscow city, Moscow tower, 8 Presnenskaya quay, building 1, floor 60, office 604",
+            "phone": "+7 968 644 65 02",
+            "coordinates": { "lat": 55.747987836488015, "lng": 37.533388886392025 }
+          },
+          {
+            "id": "ykt",
+            "city": "Yakutsk",
+            "building": "LX Sakha Center",
+            "street": "36/1 Ordzhonikidze St., floor 6, office 604",
+            "coordinates": { "lat": 62.03003081882039, "lng": 129.73045111745802 }
+          },
+          {
+            "id": "dub",
+            "city": "Dubai, UAE",
+            "building": "Bay square, Business Bay",
+            "street": "Building 13, office 705-706, Dubai, UAE",
+            "phone": "+971 4 375 3178",
+            "coordinates": { "lat": 25.218637990989023, "lng": 55.43053756476949 }
+          },
+          {
+            "id": "la",
+            "city": "Los Angeles, USA",
+            "building": "Beverly Hills office",
+            "street": "9100 Wilshire Blvd Beverly Hills, CA 90212, Office 720W",
+            "phone": "+1 (310) 714-7450",
+            "coordinates": { "lat": 34.066829590840825, "lng": -118.39011976409974 }
+          }
+        ]
+      }
+    },
+
+    "services": {
+      "hero": {
+        "title": "Our full range of services",
+        "description": "Your reliable partner in the world of real estate and business in the United Arab Emirates. \n\nOur goal is to make your investments and business operations in this country successful and selflessly meet your needs."
+      },
+      "processes": {
+        "title": "We take the whole process on ourselves",
+        "description": "Tuimaada Real Estate Company provides high-quality real estate and business consulting services in the United Arab Emirates. Our experience and expertise allow us to provide a full range of services, including:",
+        "items": [
+          {
+            "label": "Individual approach",
+            "description": "Assistance in the acquisition and sale of real estate in both the primary and secondary markets of the UAE. We provide an individual approach and professional support at all stages of the transaction."
+          },
+          {
+            "label": "Real estate rental",
+            "description": "Our experts will help you find and rent the perfect accommodation or commercial space that meets your needs."
+          },
+          {
+            "label": "Registration of resident visas",
+            "description": "Our experts will help you find and rent the perfect accommodation or commercial space that meets your needs."
+          },
+          {
+            "label": "Opening of companies",
+            "description": "Our consultants will help you with registration and registration of companies in the UAE, providing the necessary information and advice on choosing the best structure."
+          },
+          {
+            "label": "Opening of bank accounts",
+            "description": "We will provide you with all the necessary information and assistance when opening bank accounts in the UAE, providing convenience and transparency of financial transactions."
+          }
+        ]
+      }
+    },
+
+    "about": {
+      "hero": {
+        "title": "Values of our company",
+        "subtitle": "Humanity",
+        "description": "We are attentive to the needs, desires and capabilities of each client. We will individually select the objects and consult for free on all issues. We save time and money for those who contact us."
+      },
+      "simplicity": {
+        "title": "Simplicity",
+        "description": "We will take care of the documents and logistics. You will only need to select an object, sign the documents and get the keys.\n\nWe creatively and effectively solve problems in the field of residential, commercial, suburban, investment real estate in the UAE, Russia and USA, relying on the deep long-term expertise of the innovator and leader of the Russian real estate market."
+      },
+      "statistic": {
+        "clients": {
+          "number": "25 000",
+          "title": "",
+          "label": "clients"
+        },
+        "experience": {
+          "number": "11",
+          "title": " year",
+          "label": "on the market"
+        },
+        "licence": {
+          "title": "Brokerage",
+          "label": "licenses in Russia and \nthe UAE"
+        },
+        "sales": {
+          "beforeTitle": "₽",
+          "number": "1",
+          "title": "b",
+          "label": "in sales per month"
+        }
+      }
+    },
+
+    "blog": {
+      "title": "Blog",
+      "topic": "Topic",
+      "date": "Date"
+    },
+
+    "objects": {
+      "title": "Real estate in Moscow and Dubai",
+      "aboutObject": "Об объекте",
+      "filters": {
+        "developer": "Developer",
+        "city": "City",
+        "objects": {
+          "label": "Objects",
+          "placeholder": "All types"
+        },
+        "price": {
+          "label": "Price",
+          "from": "From",
+          "until": "Before"
+        },
+        "priceOrder": {
+          "label": "Price",
+          "desc": "Descending order",
+          "asc": "Ascending order"
+        },
+        "rooms": {
+          "label": "Number of rooms",
+          "placeholder": "Any"
+        },
+        "bedrooms": {
+          "title": "Санузлы",
+          "label": "Number of bedrooms",
+          "placeholder": "Any"
+        },
+        "bathrooms": {
+          "title": "Санузлы",
+          "label": "Number of bathrooms",
+          "placeholder": "Any"
+        },
+        "square": {
+          "label": "Square",
+          "from": "From",
+          "until": "Before"
+        }
+      },
+      "filtersActionBtns": {
+        "show": "Show",
+        "throwOff": "Throw off"
+      }
+    }
+  }
+}

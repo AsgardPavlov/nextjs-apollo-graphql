@@ -1,0 +1,2921 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type Admin {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  block: Boolean!
+  delete: Boolean!
+  isConfirmed: Boolean!
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+  role: AdminRole
+  roleId: String
+}
+
+type AdminAuthorizationPayload {
+  admin: Admin!
+  token: String!
+}
+
+type AdminCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  block: Int!
+  delete: Int!
+  isConfirmed: Int!
+  type: Int!
+  email: Int!
+  name: Int!
+  password: Int!
+  repassword: Int!
+  roleId: Int!
+  _all: Int!
+}
+
+input AdminCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  block: SortOrder
+  delete: SortOrder
+  isConfirmed: SortOrder
+  type: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  repassword: SortOrder
+  roleId: SortOrder
+}
+
+input AdminCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+  role: AdminRoleCreateNestedOneWithoutAdminInput
+}
+
+input AdminCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+  roleId: String
+}
+
+input AdminCreateManyRoleInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+}
+
+input AdminCreateManyRoleInputEnvelope {
+  data: [AdminCreateManyRoleInput!]!
+  skipDuplicates: Boolean
+}
+
+input AdminCreateNestedManyWithoutRoleInput {
+  create: [AdminCreateWithoutRoleInput!]
+  connectOrCreate: [AdminCreateOrConnectWithoutRoleInput!]
+  createMany: AdminCreateManyRoleInputEnvelope
+  connect: [AdminWhereUniqueInput!]
+}
+
+input AdminCreateOrConnectWithoutRoleInput {
+  where: AdminWhereUniqueInput!
+  create: AdminUncheckedCreateWithoutRoleInput!
+}
+
+input AdminCreateWithoutRoleInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+}
+
+input AdminListRelationFilter {
+  every: AdminWhereInput
+  some: AdminWhereInput
+  none: AdminWhereInput
+}
+
+type AdminMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String
+  name: String
+  password: String
+  repassword: String
+  roleId: String
+}
+
+input AdminMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  block: SortOrder
+  delete: SortOrder
+  isConfirmed: SortOrder
+  type: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  repassword: SortOrder
+  roleId: SortOrder
+}
+
+type AdminMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String
+  name: String
+  password: String
+  repassword: String
+  roleId: String
+}
+
+input AdminMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  block: SortOrder
+  delete: SortOrder
+  isConfirmed: SortOrder
+  type: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  repassword: SortOrder
+  roleId: SortOrder
+}
+
+input AdminOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AdminOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  block: SortOrder
+  delete: SortOrder
+  isConfirmed: SortOrder
+  type: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  repassword: SortOrder
+  roleId: SortOrder
+  _count: AdminCountOrderByAggregateInput
+  _max: AdminMaxOrderByAggregateInput
+  _min: AdminMinOrderByAggregateInput
+}
+
+input AdminOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  block: SortOrder
+  delete: SortOrder
+  isConfirmed: SortOrder
+  type: SortOrder
+  email: SortOrder
+  name: SortOrder
+  password: SortOrder
+  repassword: SortOrder
+  role: AdminRoleOrderByWithRelationInput
+  roleId: SortOrder
+}
+
+type AdminRole {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  description: String
+  canObject: Boolean!
+  canBlog: Boolean!
+  canReview: Boolean!
+  canChangeRole: Boolean!
+  admin(where: AdminWhereInput, orderBy: AdminOrderByWithRelationInput, cursor: AdminWhereUniqueInput, take: Int, skip: Int, distinct: AdminScalarFieldEnum): [Admin!]!
+  _count: AdminRoleCountOutputType!
+}
+
+type AdminRoleCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  title: Int!
+  description: Int!
+  canObject: Int!
+  canBlog: Int!
+  canReview: Int!
+  canChangeRole: Int!
+  _all: Int!
+}
+
+input AdminRoleCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  title: SortOrder
+  description: SortOrder
+  canObject: SortOrder
+  canBlog: SortOrder
+  canReview: SortOrder
+  canChangeRole: SortOrder
+}
+
+type AdminRoleCountOutputType {
+  admin: Int!
+}
+
+input AdminRoleCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String!
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+  admin: AdminCreateNestedManyWithoutRoleInput
+}
+
+input AdminRoleCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String!
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+}
+
+input AdminRoleCreateNestedOneWithoutAdminInput {
+  create: AdminRoleUncheckedCreateWithoutAdminInput
+  connectOrCreate: AdminRoleCreateOrConnectWithoutAdminInput
+  connect: AdminRoleWhereUniqueInput
+}
+
+input AdminRoleCreateOrConnectWithoutAdminInput {
+  where: AdminRoleWhereUniqueInput!
+  create: AdminRoleUncheckedCreateWithoutAdminInput!
+}
+
+input AdminRoleCreateWithoutAdminInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String!
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+}
+
+type AdminRoleMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+}
+
+input AdminRoleMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  title: SortOrder
+  description: SortOrder
+  canObject: SortOrder
+  canBlog: SortOrder
+  canReview: SortOrder
+  canChangeRole: SortOrder
+}
+
+type AdminRoleMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+}
+
+input AdminRoleMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  title: SortOrder
+  description: SortOrder
+  canObject: SortOrder
+  canBlog: SortOrder
+  canReview: SortOrder
+  canChangeRole: SortOrder
+}
+
+input AdminRoleOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  title: SortOrder
+  description: SortOrder
+  canObject: SortOrder
+  canBlog: SortOrder
+  canReview: SortOrder
+  canChangeRole: SortOrder
+  _count: AdminRoleCountOrderByAggregateInput
+  _max: AdminRoleMaxOrderByAggregateInput
+  _min: AdminRoleMinOrderByAggregateInput
+}
+
+input AdminRoleOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  title: SortOrder
+  description: SortOrder
+  canObject: SortOrder
+  canBlog: SortOrder
+  canReview: SortOrder
+  canChangeRole: SortOrder
+  admin: AdminOrderByRelationAggregateInput
+}
+
+input AdminRoleRelationFilter {
+  is: AdminRoleWhereInput
+  isNot: AdminRoleWhereInput
+}
+
+enum AdminRoleScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  title
+  description
+  canObject
+  canBlog
+  canReview
+  canChangeRole
+}
+
+input AdminRoleScalarWhereWithAggregatesInput {
+  AND: [AdminRoleScalarWhereWithAggregatesInput!]
+  OR: [AdminRoleScalarWhereWithAggregatesInput!]
+  NOT: [AdminRoleScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  description: StringNullableWithAggregatesFilter
+  canObject: BoolWithAggregatesFilter
+  canBlog: BoolWithAggregatesFilter
+  canReview: BoolWithAggregatesFilter
+  canChangeRole: BoolWithAggregatesFilter
+}
+
+input AdminRoleUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String!
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+  admin: AdminUncheckedCreateNestedManyWithoutRoleInput
+}
+
+input AdminRoleUncheckedCreateWithoutAdminInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  title: String!
+  description: String
+  canObject: Boolean
+  canBlog: Boolean
+  canReview: Boolean
+  canChangeRole: Boolean
+}
+
+input AdminRoleUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+  admin: AdminUncheckedUpdateManyWithoutRoleInput
+}
+
+input AdminRoleUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+}
+
+input AdminRoleUncheckedUpdateWithoutAdminInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+}
+
+input AdminRoleUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+  admin: AdminUpdateManyWithoutRoleInput
+}
+
+input AdminRoleUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+}
+
+input AdminRoleUpdateOneWithoutAdminInput {
+  create: AdminRoleUncheckedCreateWithoutAdminInput
+  connectOrCreate: AdminRoleCreateOrConnectWithoutAdminInput
+  upsert: AdminRoleUpsertWithoutAdminInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: AdminRoleWhereUniqueInput
+  update: AdminRoleUncheckedUpdateWithoutAdminInput
+}
+
+input AdminRoleUpdateWithoutAdminInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  canObject: BoolFieldUpdateOperationsInput
+  canBlog: BoolFieldUpdateOperationsInput
+  canReview: BoolFieldUpdateOperationsInput
+  canChangeRole: BoolFieldUpdateOperationsInput
+}
+
+input AdminRoleUpsertWithoutAdminInput {
+  update: AdminRoleUncheckedUpdateWithoutAdminInput!
+  create: AdminRoleUncheckedCreateWithoutAdminInput!
+}
+
+input AdminRoleWhereInput {
+  AND: [AdminRoleWhereInput!]
+  OR: [AdminRoleWhereInput!]
+  NOT: [AdminRoleWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  title: StringFilter
+  description: StringNullableFilter
+  canObject: BoolFilter
+  canBlog: BoolFilter
+  canReview: BoolFilter
+  canChangeRole: BoolFilter
+  admin: AdminListRelationFilter
+}
+
+input AdminRoleWhereUniqueInput {
+  id: String
+}
+
+enum AdminScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  block
+  delete
+  isConfirmed
+  type
+  email
+  name
+  password
+  repassword
+  roleId
+}
+
+input AdminScalarWhereInput {
+  AND: [AdminScalarWhereInput!]
+  OR: [AdminScalarWhereInput!]
+  NOT: [AdminScalarWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  block: BoolFilter
+  delete: BoolFilter
+  isConfirmed: BoolFilter
+  type: StringNullableFilter
+  email: StringFilter
+  name: StringNullableFilter
+  password: StringNullableFilter
+  repassword: StringNullableFilter
+  roleId: StringNullableFilter
+}
+
+input AdminScalarWhereWithAggregatesInput {
+  AND: [AdminScalarWhereWithAggregatesInput!]
+  OR: [AdminScalarWhereWithAggregatesInput!]
+  NOT: [AdminScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  block: BoolWithAggregatesFilter
+  delete: BoolWithAggregatesFilter
+  isConfirmed: BoolWithAggregatesFilter
+  type: StringNullableWithAggregatesFilter
+  email: StringWithAggregatesFilter
+  name: StringNullableWithAggregatesFilter
+  password: StringNullableWithAggregatesFilter
+  repassword: StringNullableWithAggregatesFilter
+  roleId: StringNullableWithAggregatesFilter
+}
+
+input AdminSignInInput {
+  email: String!
+  password: String!
+}
+
+input AdminUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+  roleId: String
+}
+
+input AdminUncheckedCreateNestedManyWithoutRoleInput {
+  create: [AdminCreateWithoutRoleInput!]
+  connectOrCreate: [AdminCreateOrConnectWithoutRoleInput!]
+  createMany: AdminCreateManyRoleInputEnvelope
+  connect: [AdminWhereUniqueInput!]
+}
+
+input AdminUncheckedCreateWithoutRoleInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  block: Boolean
+  delete: Boolean
+  isConfirmed: Boolean
+  type: String
+  email: String!
+  name: String
+  password: String
+  repassword: String
+}
+
+input AdminUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+  roleId: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+  roleId: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUncheckedUpdateManyWithoutAdminInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUncheckedUpdateManyWithoutRoleInput {
+  create: [AdminCreateWithoutRoleInput!]
+  connectOrCreate: [AdminCreateOrConnectWithoutRoleInput!]
+  upsert: [AdminUpsertWithWhereUniqueWithoutRoleInput!]
+  createMany: AdminCreateManyRoleInputEnvelope
+  set: [AdminWhereUniqueInput!]
+  disconnect: [AdminWhereUniqueInput!]
+  delete: [AdminWhereUniqueInput!]
+  connect: [AdminWhereUniqueInput!]
+  update: [AdminUpdateWithWhereUniqueWithoutRoleInput!]
+  updateMany: [AdminUpdateManyWithWhereWithoutRoleInput!]
+  deleteMany: [AdminScalarWhereInput!]
+}
+
+input AdminUncheckedUpdateWithoutRoleInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+  role: AdminRoleUpdateOneWithoutAdminInput
+}
+
+input AdminUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUpdateManyWithoutRoleInput {
+  create: [AdminCreateWithoutRoleInput!]
+  connectOrCreate: [AdminCreateOrConnectWithoutRoleInput!]
+  upsert: [AdminUpsertWithWhereUniqueWithoutRoleInput!]
+  createMany: AdminCreateManyRoleInputEnvelope
+  set: [AdminWhereUniqueInput!]
+  disconnect: [AdminWhereUniqueInput!]
+  delete: [AdminWhereUniqueInput!]
+  connect: [AdminWhereUniqueInput!]
+  update: [AdminUpdateWithWhereUniqueWithoutRoleInput!]
+  updateMany: [AdminUpdateManyWithWhereWithoutRoleInput!]
+  deleteMany: [AdminScalarWhereInput!]
+}
+
+input AdminUpdateManyWithWhereWithoutRoleInput {
+  where: AdminScalarWhereInput!
+  data: AdminUncheckedUpdateManyWithoutAdminInput!
+}
+
+input AdminUpdateWithoutRoleInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  block: BoolFieldUpdateOperationsInput
+  delete: BoolFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  type: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: NullableStringFieldUpdateOperationsInput
+  repassword: NullableStringFieldUpdateOperationsInput
+}
+
+input AdminUpdateWithWhereUniqueWithoutRoleInput {
+  where: AdminWhereUniqueInput!
+  data: AdminUncheckedUpdateWithoutRoleInput!
+}
+
+input AdminUpsertWithWhereUniqueWithoutRoleInput {
+  where: AdminWhereUniqueInput!
+  update: AdminUncheckedUpdateWithoutRoleInput!
+  create: AdminUncheckedCreateWithoutRoleInput!
+}
+
+input AdminWhereInput {
+  AND: [AdminWhereInput!]
+  OR: [AdminWhereInput!]
+  NOT: [AdminWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  block: BoolFilter
+  delete: BoolFilter
+  isConfirmed: BoolFilter
+  type: StringNullableFilter
+  email: StringFilter
+  name: StringNullableFilter
+  password: StringNullableFilter
+  repassword: StringNullableFilter
+  role: AdminRoleWhereInput
+  roleId: StringNullableFilter
+}
+
+input AdminWhereUniqueInput {
+  id: String
+  email: String
+}
+
+type AggregateAdmin {
+  _count: AdminCountAggregateOutputType
+  _min: AdminMinAggregateOutputType
+  _max: AdminMaxAggregateOutputType
+}
+
+type AggregateAdminRole {
+  _count: AdminRoleCountAggregateOutputType
+  _min: AdminRoleMinAggregateOutputType
+  _max: AdminRoleMaxAggregateOutputType
+}
+
+type AggregateApplication {
+  _count: ApplicationCountAggregateOutputType
+  _min: ApplicationMinAggregateOutputType
+  _max: ApplicationMaxAggregateOutputType
+}
+
+type AggregateBlog {
+  _count: BlogCountAggregateOutputType
+  _min: BlogMinAggregateOutputType
+  _max: BlogMaxAggregateOutputType
+}
+
+type AggregateObject {
+  _count: ObjectCountAggregateOutputType
+  _avg: ObjectAvgAggregateOutputType
+  _sum: ObjectSumAggregateOutputType
+  _min: ObjectMinAggregateOutputType
+  _max: ObjectMaxAggregateOutputType
+}
+
+type AggregateReview {
+  _count: ReviewCountAggregateOutputType
+  _avg: ReviewAvgAggregateOutputType
+  _sum: ReviewSumAggregateOutputType
+  _min: ReviewMinAggregateOutputType
+  _max: ReviewMaxAggregateOutputType
+}
+
+type AggregateUser {
+  _count: UserCountAggregateOutputType
+  _min: UserMinAggregateOutputType
+  _max: UserMaxAggregateOutputType
+}
+
+type Application {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isVisible: Boolean!
+  name: String!
+  number: String!
+  email: String!
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType!
+}
+
+type ApplicationCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  isVisible: Int!
+  name: Int!
+  number: Int!
+  email: Int!
+  callTime: Int!
+  objectOfInterest: Int!
+  commuticationType: Int!
+  _all: Int!
+}
+
+input ApplicationCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  name: SortOrder
+  number: SortOrder
+  email: SortOrder
+  callTime: SortOrder
+  objectOfInterest: SortOrder
+  commuticationType: SortOrder
+}
+
+input ApplicationCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  name: String!
+  number: String!
+  email: String!
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType
+}
+
+input ApplicationCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  name: String!
+  number: String!
+  email: String!
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType
+}
+
+type ApplicationMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  name: String
+  number: String
+  email: String
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType
+}
+
+input ApplicationMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  name: SortOrder
+  number: SortOrder
+  email: SortOrder
+  callTime: SortOrder
+  objectOfInterest: SortOrder
+  commuticationType: SortOrder
+}
+
+type ApplicationMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  name: String
+  number: String
+  email: String
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType
+}
+
+input ApplicationMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  name: SortOrder
+  number: SortOrder
+  email: SortOrder
+  callTime: SortOrder
+  objectOfInterest: SortOrder
+  commuticationType: SortOrder
+}
+
+input ApplicationOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  name: SortOrder
+  number: SortOrder
+  email: SortOrder
+  callTime: SortOrder
+  objectOfInterest: SortOrder
+  commuticationType: SortOrder
+  _count: ApplicationCountOrderByAggregateInput
+  _max: ApplicationMaxOrderByAggregateInput
+  _min: ApplicationMinOrderByAggregateInput
+}
+
+input ApplicationOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  name: SortOrder
+  number: SortOrder
+  email: SortOrder
+  callTime: SortOrder
+  objectOfInterest: SortOrder
+  commuticationType: SortOrder
+}
+
+enum ApplicationScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  isVisible
+  name
+  number
+  email
+  callTime
+  objectOfInterest
+  commuticationType
+}
+
+input ApplicationScalarWhereWithAggregatesInput {
+  AND: [ApplicationScalarWhereWithAggregatesInput!]
+  OR: [ApplicationScalarWhereWithAggregatesInput!]
+  NOT: [ApplicationScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  isVisible: BoolWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  number: StringWithAggregatesFilter
+  email: StringWithAggregatesFilter
+  callTime: StringNullableWithAggregatesFilter
+  objectOfInterest: StringNullableWithAggregatesFilter
+  commuticationType: EnumCommuticationTypeWithAggregatesFilter
+}
+
+input ApplicationUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  name: String!
+  number: String!
+  email: String!
+  callTime: String
+  objectOfInterest: String
+  commuticationType: CommuticationType
+}
+
+input ApplicationUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  number: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  callTime: NullableStringFieldUpdateOperationsInput
+  objectOfInterest: NullableStringFieldUpdateOperationsInput
+  commuticationType: EnumCommuticationTypeFieldUpdateOperationsInput
+}
+
+input ApplicationUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  number: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  callTime: NullableStringFieldUpdateOperationsInput
+  objectOfInterest: NullableStringFieldUpdateOperationsInput
+  commuticationType: EnumCommuticationTypeFieldUpdateOperationsInput
+}
+
+input ApplicationUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  number: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  callTime: NullableStringFieldUpdateOperationsInput
+  objectOfInterest: NullableStringFieldUpdateOperationsInput
+  commuticationType: EnumCommuticationTypeFieldUpdateOperationsInput
+}
+
+input ApplicationUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  number: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  callTime: NullableStringFieldUpdateOperationsInput
+  objectOfInterest: NullableStringFieldUpdateOperationsInput
+  commuticationType: EnumCommuticationTypeFieldUpdateOperationsInput
+}
+
+input ApplicationWhereInput {
+  AND: [ApplicationWhereInput!]
+  OR: [ApplicationWhereInput!]
+  NOT: [ApplicationWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  isVisible: BoolFilter
+  name: StringFilter
+  number: StringFilter
+  email: StringFilter
+  callTime: StringNullableFilter
+  objectOfInterest: StringNullableFilter
+  commuticationType: EnumCommuticationTypeFilter
+}
+
+input ApplicationWhereUniqueInput {
+  id: String
+}
+
+type BatchPayload {
+  count: Int!
+}
+
+type Blog {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isVisible: Boolean!
+  title: String!
+  topic: String
+  img: String!
+  description: String!
+  images: [String!]!
+}
+
+type BlogCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  isVisible: Int!
+  title: Int!
+  topic: Int!
+  img: Int!
+  description: Int!
+  images: Int!
+  _all: Int!
+}
+
+input BlogCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  topic: SortOrder
+  img: SortOrder
+  description: SortOrder
+  images: SortOrder
+}
+
+input BlogCreateimagesInput {
+  set: [String!]!
+}
+
+input BlogCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  topic: String
+  img: String!
+  description: String!
+  images: [String!]
+}
+
+input BlogCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  topic: String
+  img: String!
+  description: String!
+  images: [String!]
+}
+
+type BlogMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  topic: String
+  img: String
+  description: String
+}
+
+input BlogMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  topic: SortOrder
+  img: SortOrder
+  description: SortOrder
+}
+
+type BlogMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  topic: String
+  img: String
+  description: String
+}
+
+input BlogMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  topic: SortOrder
+  img: SortOrder
+  description: SortOrder
+}
+
+input BlogOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  topic: SortOrder
+  img: SortOrder
+  description: SortOrder
+  images: SortOrder
+  _count: BlogCountOrderByAggregateInput
+  _max: BlogMaxOrderByAggregateInput
+  _min: BlogMinOrderByAggregateInput
+}
+
+input BlogOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  topic: SortOrder
+  img: SortOrder
+  description: SortOrder
+  images: SortOrder
+}
+
+enum BlogScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  isVisible
+  title
+  topic
+  img
+  description
+  images
+}
+
+input BlogScalarWhereWithAggregatesInput {
+  AND: [BlogScalarWhereWithAggregatesInput!]
+  OR: [BlogScalarWhereWithAggregatesInput!]
+  NOT: [BlogScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  isVisible: BoolWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  topic: StringNullableWithAggregatesFilter
+  img: StringWithAggregatesFilter
+  description: StringWithAggregatesFilter
+  images: StringNullableListFilter
+}
+
+input BlogUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  topic: String
+  img: String!
+  description: String!
+  images: [String!]
+}
+
+input BlogUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  topic: NullableStringFieldUpdateOperationsInput
+  img: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  images: [String!]
+}
+
+input BlogUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  topic: NullableStringFieldUpdateOperationsInput
+  img: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  images: [String!]
+}
+
+input BlogUpdateimagesInput {
+  set: [String!]
+  push: [String!]
+}
+
+input BlogUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  topic: NullableStringFieldUpdateOperationsInput
+  img: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  images: [String!]
+}
+
+input BlogUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  topic: NullableStringFieldUpdateOperationsInput
+  img: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  images: [String!]
+}
+
+input BlogWhereInput {
+  AND: [BlogWhereInput!]
+  OR: [BlogWhereInput!]
+  NOT: [BlogWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  isVisible: BoolFilter
+  title: StringFilter
+  topic: StringNullableFilter
+  img: StringFilter
+  description: StringFilter
+  images: StringNullableListFilter
+}
+
+input BlogWhereUniqueInput {
+  id: String
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input BoolWithAggregatesFilter {
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedBoolFilter
+  _max: NestedBoolFilter
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+input ChangePasswordInput {
+  password: String!
+  confirmPassword: String!
+}
+
+enum CityEnum {
+  DUBAI
+  MOSCOW
+}
+
+enum CommuticationType {
+  WA
+  TG
+  CALL
+  EMAIL
+}
+
+scalar DateTime
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input DateTimeWithAggregatesFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedDateTimeFilter
+  _max: NestedDateTimeFilter
+}
+
+input EnumCityEnumNullableFilter {
+  equals: CityEnum
+  in: [CityEnum!]
+  notIn: [CityEnum!]
+  not: NestedEnumCityEnumNullableFilter
+}
+
+input EnumCityEnumNullableWithAggregatesFilter {
+  equals: CityEnum
+  in: [CityEnum!]
+  notIn: [CityEnum!]
+  not: NestedEnumCityEnumNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedEnumCityEnumNullableFilter
+  _max: NestedEnumCityEnumNullableFilter
+}
+
+input EnumCommuticationTypeFieldUpdateOperationsInput {
+  set: CommuticationType
+}
+
+input EnumCommuticationTypeFilter {
+  equals: CommuticationType
+  in: [CommuticationType!]
+  notIn: [CommuticationType!]
+  not: NestedEnumCommuticationTypeFilter
+}
+
+input EnumCommuticationTypeWithAggregatesFilter {
+  equals: CommuticationType
+  in: [CommuticationType!]
+  notIn: [CommuticationType!]
+  not: NestedEnumCommuticationTypeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedEnumCommuticationTypeFilter
+  _max: NestedEnumCommuticationTypeFilter
+}
+
+input EnumTypeEnumNullableFilter {
+  equals: TypeEnum
+  in: [TypeEnum!]
+  notIn: [TypeEnum!]
+  not: NestedEnumTypeEnumNullableFilter
+}
+
+input EnumTypeEnumNullableWithAggregatesFilter {
+  equals: TypeEnum
+  in: [TypeEnum!]
+  notIn: [TypeEnum!]
+  not: NestedEnumTypeEnumNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedEnumTypeEnumNullableFilter
+  _max: NestedEnumTypeEnumNullableFilter
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input IntNullableWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _avg: NestedFloatNullableFilter
+  _sum: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+}
+
+input IntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+scalar Json
+
+type Mutation {
+  createAdmin(data: AdminCreateInput!): Admin!
+  resetPassword(where: AdminWhereUniqueInput!): Boolean
+  signInAdmin(data: AdminSignInInput!): AdminAuthorizationPayload!
+  changePasswordAdmin(data: ChangePasswordInput!): Admin!
+  singleUpload(upload: Upload!): String
+  multiUpload(upload: [Upload]!): [String]
+  deleteFile(fileName: String!): String!
+  createOneUser(data: UserCreateInput!): User!
+  updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  deleteOneUser(where: UserWhereUniqueInput!): User
+  upsertOneUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User
+  deleteManyUser(where: UserWhereInput): BatchPayload
+  updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload
+  createOneObject(data: ObjectCreateInput!): Object!
+  updateOneObject(data: ObjectUpdateInput!, where: ObjectWhereUniqueInput!): Object!
+  deleteOneObject(where: ObjectWhereUniqueInput!): Object
+  upsertOneObject(where: ObjectWhereUniqueInput!, create: ObjectCreateInput!, update: ObjectUpdateInput!): Object
+  deleteManyObject(where: ObjectWhereInput): BatchPayload
+  updateManyObject(data: ObjectUpdateManyMutationInput!, where: ObjectWhereInput): BatchPayload
+  createOneBlog(data: BlogCreateInput!): Blog!
+  updateOneBlog(data: BlogUpdateInput!, where: BlogWhereUniqueInput!): Blog!
+  deleteOneBlog(where: BlogWhereUniqueInput!): Blog
+  upsertOneBlog(where: BlogWhereUniqueInput!, create: BlogCreateInput!, update: BlogUpdateInput!): Blog
+  deleteManyBlog(where: BlogWhereInput): BatchPayload
+  updateManyBlog(data: BlogUpdateManyMutationInput!, where: BlogWhereInput): BatchPayload
+  createOneReview(data: ReviewCreateInput!): Review!
+  updateOneReview(data: ReviewUpdateInput!, where: ReviewWhereUniqueInput!): Review!
+  deleteOneReview(where: ReviewWhereUniqueInput!): Review
+  upsertOneReview(where: ReviewWhereUniqueInput!, create: ReviewCreateInput!, update: ReviewUpdateInput!): Review
+  deleteManyReview(where: ReviewWhereInput): BatchPayload
+  updateManyReview(data: ReviewUpdateManyMutationInput!, where: ReviewWhereInput): BatchPayload
+  createOneApplication(data: ApplicationCreateInput!): Application!
+  updateOneApplication(data: ApplicationUpdateInput!, where: ApplicationWhereUniqueInput!): Application!
+  deleteOneApplication(where: ApplicationWhereUniqueInput!): Application
+  upsertOneApplication(where: ApplicationWhereUniqueInput!, create: ApplicationCreateInput!, update: ApplicationUpdateInput!): Application
+  deleteManyApplication(where: ApplicationWhereInput): BatchPayload
+  updateManyApplication(data: ApplicationUpdateManyMutationInput!, where: ApplicationWhereInput): BatchPayload
+  createOneAdmin(data: AdminCreateInput!): Admin!
+  updateOneAdmin(data: AdminUpdateInput!, where: AdminWhereUniqueInput!): Admin!
+  deleteOneAdmin(where: AdminWhereUniqueInput!): Admin
+  upsertOneAdmin(where: AdminWhereUniqueInput!, create: AdminCreateInput!, update: AdminUpdateInput!): Admin
+  deleteManyAdmin(where: AdminWhereInput): BatchPayload
+  updateManyAdmin(data: AdminUpdateManyMutationInput!, where: AdminWhereInput): BatchPayload
+  createOneAdminRole(data: AdminRoleCreateInput!): AdminRole!
+  updateOneAdminRole(data: AdminRoleUpdateInput!, where: AdminRoleWhereUniqueInput!): AdminRole!
+  deleteOneAdminRole(where: AdminRoleWhereUniqueInput!): AdminRole
+  upsertOneAdminRole(where: AdminRoleWhereUniqueInput!, create: AdminRoleCreateInput!, update: AdminRoleUpdateInput!): AdminRole
+  deleteManyAdminRole(where: AdminRoleWhereInput): BatchPayload
+  updateManyAdminRole(data: AdminRoleUpdateManyMutationInput!, where: AdminRoleWhereInput): BatchPayload
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolWithAggregatesFilter {
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedBoolFilter
+  _max: NestedBoolFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeWithAggregatesFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedDateTimeFilter
+  _max: NestedDateTimeFilter
+}
+
+input NestedEnumCityEnumNullableFilter {
+  equals: CityEnum
+  in: [CityEnum!]
+  notIn: [CityEnum!]
+  not: NestedEnumCityEnumNullableFilter
+}
+
+input NestedEnumCityEnumNullableWithAggregatesFilter {
+  equals: CityEnum
+  in: [CityEnum!]
+  notIn: [CityEnum!]
+  not: NestedEnumCityEnumNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedEnumCityEnumNullableFilter
+  _max: NestedEnumCityEnumNullableFilter
+}
+
+input NestedEnumCommuticationTypeFilter {
+  equals: CommuticationType
+  in: [CommuticationType!]
+  notIn: [CommuticationType!]
+  not: NestedEnumCommuticationTypeFilter
+}
+
+input NestedEnumCommuticationTypeWithAggregatesFilter {
+  equals: CommuticationType
+  in: [CommuticationType!]
+  notIn: [CommuticationType!]
+  not: NestedEnumCommuticationTypeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedEnumCommuticationTypeFilter
+  _max: NestedEnumCommuticationTypeFilter
+}
+
+input NestedEnumTypeEnumNullableFilter {
+  equals: TypeEnum
+  in: [TypeEnum!]
+  notIn: [TypeEnum!]
+  not: NestedEnumTypeEnumNullableFilter
+}
+
+input NestedEnumTypeEnumNullableWithAggregatesFilter {
+  equals: TypeEnum
+  in: [TypeEnum!]
+  notIn: [TypeEnum!]
+  not: NestedEnumTypeEnumNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedEnumTypeEnumNullableFilter
+  _max: NestedEnumTypeEnumNullableFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatNullableFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _avg: NestedFloatNullableFilter
+  _sum: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+}
+
+input NestedIntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedStringNullableFilter
+  _max: NestedStringNullableFilter
+}
+
+input NestedStringWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedStringFilter
+  _max: NestedStringFilter
+}
+
+input NullableEnumCityEnumFieldUpdateOperationsInput {
+  set: CityEnum
+}
+
+input NullableEnumTypeEnumFieldUpdateOperationsInput {
+  set: TypeEnum
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+type Object {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isVisible: Boolean!
+  title: String!
+  type: TypeEnum
+  description: String
+  images: [String!]!
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+type ObjectAvgAggregateOutputType {
+  space: Float
+  rooms: Float
+  bedrooms: Float
+  bathrooms: Float
+  costRUB: Float
+  costUSD: Float
+  costAED: Float
+}
+
+input ObjectAvgOrderByAggregateInput {
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+}
+
+type ObjectCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  isVisible: Int!
+  title: Int!
+  type: Int!
+  description: Int!
+  images: Int!
+  about: Int!
+  aboutImg: Int!
+  developer: Int!
+  address: Int!
+  space: Int!
+  rooms: Int!
+  bedrooms: Int!
+  bathrooms: Int!
+  costRUB: Int!
+  costUSD: Int!
+  costAED: Int!
+  city: Int!
+  _all: Int!
+}
+
+input ObjectCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  type: SortOrder
+  description: SortOrder
+  images: SortOrder
+  about: SortOrder
+  aboutImg: SortOrder
+  developer: SortOrder
+  address: SortOrder
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+  city: SortOrder
+}
+
+input ObjectCreateimagesInput {
+  set: [String!]!
+}
+
+input ObjectCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  type: TypeEnum
+  description: String
+  images: [String!]
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+input ObjectCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  type: TypeEnum
+  description: String
+  images: [String!]
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+type ObjectMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  type: TypeEnum
+  description: String
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+input ObjectMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  type: SortOrder
+  description: SortOrder
+  about: SortOrder
+  aboutImg: SortOrder
+  developer: SortOrder
+  address: SortOrder
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+  city: SortOrder
+}
+
+type ObjectMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  type: TypeEnum
+  description: String
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+input ObjectMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  type: SortOrder
+  description: SortOrder
+  about: SortOrder
+  aboutImg: SortOrder
+  developer: SortOrder
+  address: SortOrder
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+  city: SortOrder
+}
+
+input ObjectOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  type: SortOrder
+  description: SortOrder
+  images: SortOrder
+  about: SortOrder
+  aboutImg: SortOrder
+  developer: SortOrder
+  address: SortOrder
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+  city: SortOrder
+  _count: ObjectCountOrderByAggregateInput
+  _avg: ObjectAvgOrderByAggregateInput
+  _max: ObjectMaxOrderByAggregateInput
+  _min: ObjectMinOrderByAggregateInput
+  _sum: ObjectSumOrderByAggregateInput
+}
+
+input ObjectOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  type: SortOrder
+  description: SortOrder
+  images: SortOrder
+  about: SortOrder
+  aboutImg: SortOrder
+  developer: SortOrder
+  address: SortOrder
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+  city: SortOrder
+}
+
+enum ObjectScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  isVisible
+  title
+  type
+  description
+  images
+  about
+  aboutImg
+  developer
+  address
+  space
+  rooms
+  bedrooms
+  bathrooms
+  costRUB
+  costUSD
+  costAED
+  city
+}
+
+input ObjectScalarWhereWithAggregatesInput {
+  AND: [ObjectScalarWhereWithAggregatesInput!]
+  OR: [ObjectScalarWhereWithAggregatesInput!]
+  NOT: [ObjectScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  isVisible: BoolWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  type: EnumTypeEnumNullableWithAggregatesFilter
+  description: StringNullableWithAggregatesFilter
+  images: StringNullableListFilter
+  about: StringNullableWithAggregatesFilter
+  aboutImg: StringNullableWithAggregatesFilter
+  developer: StringNullableWithAggregatesFilter
+  address: StringNullableWithAggregatesFilter
+  space: IntNullableWithAggregatesFilter
+  rooms: IntNullableWithAggregatesFilter
+  bedrooms: IntNullableWithAggregatesFilter
+  bathrooms: IntNullableWithAggregatesFilter
+  costRUB: IntNullableWithAggregatesFilter
+  costUSD: IntNullableWithAggregatesFilter
+  costAED: IntNullableWithAggregatesFilter
+  city: EnumCityEnumNullableWithAggregatesFilter
+}
+
+type ObjectSumAggregateOutputType {
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+}
+
+input ObjectSumOrderByAggregateInput {
+  space: SortOrder
+  rooms: SortOrder
+  bedrooms: SortOrder
+  bathrooms: SortOrder
+  costRUB: SortOrder
+  costUSD: SortOrder
+  costAED: SortOrder
+}
+
+input ObjectUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  type: TypeEnum
+  description: String
+  images: [String!]
+  about: String
+  aboutImg: String
+  developer: String
+  address: String
+  space: Int
+  rooms: Int
+  bedrooms: Int
+  bathrooms: Int
+  costRUB: Int
+  costUSD: Int
+  costAED: Int
+  city: CityEnum
+}
+
+input ObjectUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  type: NullableEnumTypeEnumFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  images: [String!]
+  about: NullableStringFieldUpdateOperationsInput
+  aboutImg: NullableStringFieldUpdateOperationsInput
+  developer: NullableStringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  space: NullableIntFieldUpdateOperationsInput
+  rooms: NullableIntFieldUpdateOperationsInput
+  bedrooms: NullableIntFieldUpdateOperationsInput
+  bathrooms: NullableIntFieldUpdateOperationsInput
+  costRUB: NullableIntFieldUpdateOperationsInput
+  costUSD: NullableIntFieldUpdateOperationsInput
+  costAED: NullableIntFieldUpdateOperationsInput
+  city: NullableEnumCityEnumFieldUpdateOperationsInput
+}
+
+input ObjectUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  type: NullableEnumTypeEnumFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  images: [String!]
+  about: NullableStringFieldUpdateOperationsInput
+  aboutImg: NullableStringFieldUpdateOperationsInput
+  developer: NullableStringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  space: NullableIntFieldUpdateOperationsInput
+  rooms: NullableIntFieldUpdateOperationsInput
+  bedrooms: NullableIntFieldUpdateOperationsInput
+  bathrooms: NullableIntFieldUpdateOperationsInput
+  costRUB: NullableIntFieldUpdateOperationsInput
+  costUSD: NullableIntFieldUpdateOperationsInput
+  costAED: NullableIntFieldUpdateOperationsInput
+  city: NullableEnumCityEnumFieldUpdateOperationsInput
+}
+
+input ObjectUpdateimagesInput {
+  set: [String!]
+  push: [String!]
+}
+
+input ObjectUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  type: NullableEnumTypeEnumFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  images: [String!]
+  about: NullableStringFieldUpdateOperationsInput
+  aboutImg: NullableStringFieldUpdateOperationsInput
+  developer: NullableStringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  space: NullableIntFieldUpdateOperationsInput
+  rooms: NullableIntFieldUpdateOperationsInput
+  bedrooms: NullableIntFieldUpdateOperationsInput
+  bathrooms: NullableIntFieldUpdateOperationsInput
+  costRUB: NullableIntFieldUpdateOperationsInput
+  costUSD: NullableIntFieldUpdateOperationsInput
+  costAED: NullableIntFieldUpdateOperationsInput
+  city: NullableEnumCityEnumFieldUpdateOperationsInput
+}
+
+input ObjectUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  type: NullableEnumTypeEnumFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  images: [String!]
+  about: NullableStringFieldUpdateOperationsInput
+  aboutImg: NullableStringFieldUpdateOperationsInput
+  developer: NullableStringFieldUpdateOperationsInput
+  address: NullableStringFieldUpdateOperationsInput
+  space: NullableIntFieldUpdateOperationsInput
+  rooms: NullableIntFieldUpdateOperationsInput
+  bedrooms: NullableIntFieldUpdateOperationsInput
+  bathrooms: NullableIntFieldUpdateOperationsInput
+  costRUB: NullableIntFieldUpdateOperationsInput
+  costUSD: NullableIntFieldUpdateOperationsInput
+  costAED: NullableIntFieldUpdateOperationsInput
+  city: NullableEnumCityEnumFieldUpdateOperationsInput
+}
+
+input ObjectWhereInput {
+  AND: [ObjectWhereInput!]
+  OR: [ObjectWhereInput!]
+  NOT: [ObjectWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  isVisible: BoolFilter
+  title: StringFilter
+  type: EnumTypeEnumNullableFilter
+  description: StringNullableFilter
+  images: StringNullableListFilter
+  about: StringNullableFilter
+  aboutImg: StringNullableFilter
+  developer: StringNullableFilter
+  address: StringNullableFilter
+  space: IntNullableFilter
+  rooms: IntNullableFilter
+  bedrooms: IntNullableFilter
+  bathrooms: IntNullableFilter
+  costRUB: IntNullableFilter
+  costUSD: IntNullableFilter
+  costAED: IntNullableFilter
+  city: EnumCityEnumNullableFilter
+}
+
+input ObjectWhereUniqueInput {
+  id: String
+}
+
+type Query {
+  findMeAdmin: Admin
+  findUniqueUser(where: UserWhereUniqueInput!): User
+  findFirstUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum]): User
+  findManyUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum]): [User!]
+  findManyUserCount(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum]): Int!
+  aggregateUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput], cursor: UserWhereUniqueInput, take: Int, skip: Int): AggregateUser
+  findUniqueObject(where: ObjectWhereUniqueInput!): Object
+  findFirstObject(where: ObjectWhereInput, orderBy: [ObjectOrderByWithRelationInput], cursor: ObjectWhereUniqueInput, take: Int, skip: Int, distinct: [ObjectScalarFieldEnum]): Object
+  findManyObject(where: ObjectWhereInput, orderBy: [ObjectOrderByWithRelationInput], cursor: ObjectWhereUniqueInput, take: Int, skip: Int, distinct: [ObjectScalarFieldEnum]): [Object!]
+  findManyObjectCount(where: ObjectWhereInput, orderBy: [ObjectOrderByWithRelationInput], cursor: ObjectWhereUniqueInput, take: Int, skip: Int, distinct: [ObjectScalarFieldEnum]): Int!
+  aggregateObject(where: ObjectWhereInput, orderBy: [ObjectOrderByWithRelationInput], cursor: ObjectWhereUniqueInput, take: Int, skip: Int): AggregateObject
+  findUniqueBlog(where: BlogWhereUniqueInput!): Blog
+  findFirstBlog(where: BlogWhereInput, orderBy: [BlogOrderByWithRelationInput], cursor: BlogWhereUniqueInput, take: Int, skip: Int, distinct: [BlogScalarFieldEnum]): Blog
+  findManyBlog(where: BlogWhereInput, orderBy: [BlogOrderByWithRelationInput], cursor: BlogWhereUniqueInput, take: Int, skip: Int, distinct: [BlogScalarFieldEnum]): [Blog!]
+  findManyBlogCount(where: BlogWhereInput, orderBy: [BlogOrderByWithRelationInput], cursor: BlogWhereUniqueInput, take: Int, skip: Int, distinct: [BlogScalarFieldEnum]): Int!
+  aggregateBlog(where: BlogWhereInput, orderBy: [BlogOrderByWithRelationInput], cursor: BlogWhereUniqueInput, take: Int, skip: Int): AggregateBlog
+  findUniqueReview(where: ReviewWhereUniqueInput!): Review
+  findFirstReview(where: ReviewWhereInput, orderBy: [ReviewOrderByWithRelationInput], cursor: ReviewWhereUniqueInput, take: Int, skip: Int, distinct: [ReviewScalarFieldEnum]): Review
+  findManyReview(where: ReviewWhereInput, orderBy: [ReviewOrderByWithRelationInput], cursor: ReviewWhereUniqueInput, take: Int, skip: Int, distinct: [ReviewScalarFieldEnum]): [Review!]
+  findManyReviewCount(where: ReviewWhereInput, orderBy: [ReviewOrderByWithRelationInput], cursor: ReviewWhereUniqueInput, take: Int, skip: Int, distinct: [ReviewScalarFieldEnum]): Int!
+  aggregateReview(where: ReviewWhereInput, orderBy: [ReviewOrderByWithRelationInput], cursor: ReviewWhereUniqueInput, take: Int, skip: Int): AggregateReview
+  findUniqueApplication(where: ApplicationWhereUniqueInput!): Application
+  findFirstApplication(where: ApplicationWhereInput, orderBy: [ApplicationOrderByWithRelationInput], cursor: ApplicationWhereUniqueInput, take: Int, skip: Int, distinct: [ApplicationScalarFieldEnum]): Application
+  findManyApplication(where: ApplicationWhereInput, orderBy: [ApplicationOrderByWithRelationInput], cursor: ApplicationWhereUniqueInput, take: Int, skip: Int, distinct: [ApplicationScalarFieldEnum]): [Application!]
+  findManyApplicationCount(where: ApplicationWhereInput, orderBy: [ApplicationOrderByWithRelationInput], cursor: ApplicationWhereUniqueInput, take: Int, skip: Int, distinct: [ApplicationScalarFieldEnum]): Int!
+  aggregateApplication(where: ApplicationWhereInput, orderBy: [ApplicationOrderByWithRelationInput], cursor: ApplicationWhereUniqueInput, take: Int, skip: Int): AggregateApplication
+  findUniqueAdmin(where: AdminWhereUniqueInput!): Admin
+  findFirstAdmin(where: AdminWhereInput, orderBy: [AdminOrderByWithRelationInput], cursor: AdminWhereUniqueInput, take: Int, skip: Int, distinct: [AdminScalarFieldEnum]): Admin
+  findManyAdmin(where: AdminWhereInput, orderBy: [AdminOrderByWithRelationInput], cursor: AdminWhereUniqueInput, take: Int, skip: Int, distinct: [AdminScalarFieldEnum]): [Admin!]
+  findManyAdminCount(where: AdminWhereInput, orderBy: [AdminOrderByWithRelationInput], cursor: AdminWhereUniqueInput, take: Int, skip: Int, distinct: [AdminScalarFieldEnum]): Int!
+  aggregateAdmin(where: AdminWhereInput, orderBy: [AdminOrderByWithRelationInput], cursor: AdminWhereUniqueInput, take: Int, skip: Int): AggregateAdmin
+  findUniqueAdminRole(where: AdminRoleWhereUniqueInput!): AdminRole
+  findFirstAdminRole(where: AdminRoleWhereInput, orderBy: [AdminRoleOrderByWithRelationInput], cursor: AdminRoleWhereUniqueInput, take: Int, skip: Int, distinct: [AdminRoleScalarFieldEnum]): AdminRole
+  findManyAdminRole(where: AdminRoleWhereInput, orderBy: [AdminRoleOrderByWithRelationInput], cursor: AdminRoleWhereUniqueInput, take: Int, skip: Int, distinct: [AdminRoleScalarFieldEnum]): [AdminRole!]
+  findManyAdminRoleCount(where: AdminRoleWhereInput, orderBy: [AdminRoleOrderByWithRelationInput], cursor: AdminRoleWhereUniqueInput, take: Int, skip: Int, distinct: [AdminRoleScalarFieldEnum]): Int!
+  aggregateAdminRole(where: AdminRoleWhereInput, orderBy: [AdminRoleOrderByWithRelationInput], cursor: AdminRoleWhereUniqueInput, take: Int, skip: Int): AggregateAdminRole
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+type Review {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isVisible: Boolean!
+  title: String!
+  description: String!
+  rating: Int!
+}
+
+type ReviewAvgAggregateOutputType {
+  rating: Float
+}
+
+input ReviewAvgOrderByAggregateInput {
+  rating: SortOrder
+}
+
+type ReviewCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  isVisible: Int!
+  title: Int!
+  description: Int!
+  rating: Int!
+  _all: Int!
+}
+
+input ReviewCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  description: SortOrder
+  rating: SortOrder
+}
+
+input ReviewCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  description: String!
+  rating: Int!
+}
+
+input ReviewCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  description: String!
+  rating: Int!
+}
+
+type ReviewMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  description: String
+  rating: Int
+}
+
+input ReviewMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  description: SortOrder
+  rating: SortOrder
+}
+
+type ReviewMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String
+  description: String
+  rating: Int
+}
+
+input ReviewMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  description: SortOrder
+  rating: SortOrder
+}
+
+input ReviewOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  description: SortOrder
+  rating: SortOrder
+  _count: ReviewCountOrderByAggregateInput
+  _avg: ReviewAvgOrderByAggregateInput
+  _max: ReviewMaxOrderByAggregateInput
+  _min: ReviewMinOrderByAggregateInput
+  _sum: ReviewSumOrderByAggregateInput
+}
+
+input ReviewOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isVisible: SortOrder
+  title: SortOrder
+  description: SortOrder
+  rating: SortOrder
+}
+
+enum ReviewScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  isVisible
+  title
+  description
+  rating
+}
+
+input ReviewScalarWhereWithAggregatesInput {
+  AND: [ReviewScalarWhereWithAggregatesInput!]
+  OR: [ReviewScalarWhereWithAggregatesInput!]
+  NOT: [ReviewScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  isVisible: BoolWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  description: StringWithAggregatesFilter
+  rating: IntWithAggregatesFilter
+}
+
+type ReviewSumAggregateOutputType {
+  rating: Int
+}
+
+input ReviewSumOrderByAggregateInput {
+  rating: SortOrder
+}
+
+input ReviewUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isVisible: Boolean
+  title: String!
+  description: String!
+  rating: Int!
+}
+
+input ReviewUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: IntFieldUpdateOperationsInput
+}
+
+input ReviewUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: IntFieldUpdateOperationsInput
+}
+
+input ReviewUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: IntFieldUpdateOperationsInput
+}
+
+input ReviewUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isVisible: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: IntFieldUpdateOperationsInput
+}
+
+input ReviewWhereInput {
+  AND: [ReviewWhereInput!]
+  OR: [ReviewWhereInput!]
+  NOT: [ReviewWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  isVisible: BoolFilter
+  title: StringFilter
+  description: StringFilter
+  rating: IntFilter
+}
+
+input ReviewWhereUniqueInput {
+  id: String
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+}
+
+input StringNullableListFilter {
+  equals: [String!]
+  has: String
+  hasEvery: [String!]
+  hasSome: [String!]
+  isEmpty: Boolean
+}
+
+input StringNullableWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedStringNullableFilter
+  _max: NestedStringNullableFilter
+}
+
+input StringWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedStringFilter
+  _max: NestedStringFilter
+}
+
+enum TypeEnum {
+  APARTMENTS
+  TOWNHOUSES
+  VILLAS
+  PLOTS
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type User {
+  id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isConfirmed: Boolean!
+  name: String!
+  phone: String!
+}
+
+type UserCountAggregateOutputType {
+  id: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  isConfirmed: Int!
+  name: Int!
+  phone: Int!
+  _all: Int!
+}
+
+input UserCountOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isConfirmed: SortOrder
+  name: SortOrder
+  phone: SortOrder
+}
+
+input UserCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isConfirmed: Boolean
+  name: String!
+  phone: String!
+}
+
+input UserCreateManyInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isConfirmed: Boolean
+  name: String!
+  phone: String!
+}
+
+type UserMaxAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isConfirmed: Boolean
+  name: String
+  phone: String
+}
+
+input UserMaxOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isConfirmed: SortOrder
+  name: SortOrder
+  phone: SortOrder
+}
+
+type UserMinAggregateOutputType {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isConfirmed: Boolean
+  name: String
+  phone: String
+}
+
+input UserMinOrderByAggregateInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isConfirmed: SortOrder
+  name: SortOrder
+  phone: SortOrder
+}
+
+input UserOrderByWithAggregationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isConfirmed: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  _count: UserCountOrderByAggregateInput
+  _max: UserMaxOrderByAggregateInput
+  _min: UserMinOrderByAggregateInput
+}
+
+input UserOrderByWithRelationInput {
+  id: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  isConfirmed: SortOrder
+  name: SortOrder
+  phone: SortOrder
+}
+
+enum UserScalarFieldEnum {
+  id
+  createdAt
+  updatedAt
+  isConfirmed
+  name
+  phone
+}
+
+input UserScalarWhereWithAggregatesInput {
+  AND: [UserScalarWhereWithAggregatesInput!]
+  OR: [UserScalarWhereWithAggregatesInput!]
+  NOT: [UserScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  isConfirmed: BoolWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  phone: StringWithAggregatesFilter
+}
+
+input UserUncheckedCreateInput {
+  id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  isConfirmed: Boolean
+  name: String!
+  phone: String!
+}
+
+input UserUncheckedUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  isConfirmed: BoolFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: StringFieldUpdateOperationsInput
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  isConfirmed: BoolFilter
+  name: StringFilter
+  phone: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String
+}
+
