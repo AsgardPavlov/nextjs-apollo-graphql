@@ -1,4 +1,4 @@
-# Next 13 App
+# Real estate Next.JS 13 App
 
 A modern web application built with Next.js, Tailwind CSS, i18n for internationalization, and Apollo Client for handling GraphQL data.
 
